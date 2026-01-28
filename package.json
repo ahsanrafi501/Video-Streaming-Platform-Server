@@ -1,0 +1,16 @@
+{
+  "name": "video_streaming_platform_server",
+  "version": "1.0.0",
+  "description": "server for video streaming platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Javascript",
+    "express",
+    "node"
+  ],
+  "author": "Ahsan Habib",
+  "license": "ISC"
+}

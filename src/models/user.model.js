@@ -26,11 +26,11 @@ const userSchema = new Schema(
             trim: true,
             index: true
         },
-        avater: {
+        avatar: {
             type: String, //cloudnary Url
             required: true,
         },
-        coverImg: {
+        coverImage: {
             type: String, //cloudnary Url
         },
         watchHistory: [
@@ -53,12 +53,12 @@ const userSchema = new Schema(
 )
 
 
-userSchema.pre("save", async function (next) {
-    if(!this.isModified("password")) return next();
+userSchema.pre("save", async function () {
 
-    this.password = await bcrypt.hash(this.password, 10)
-    next();
-})
+    if (!this.isModified("password")) return;
+
+    this.password = await bcrypt.hash(this.password, 10);
+});
 
 
 userSchema.methods.isPasswordCorrect = async function (password) {
@@ -86,7 +86,7 @@ userSchema.methods.generateRefreshToken = function(){
         },
         process.env.REFRESH_TOKEN_SECRET,
         {
-            expiresIn:process.env.REFRESH_TOKEN_SECRET
+            expiresIn:process.env.REFRESH_TOKEN_EXPIRY
         }
     )
 }
